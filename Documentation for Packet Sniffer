@@ -1,0 +1,209 @@
+What is Packet Sniffing?
+
+Imagine standing beside a highway and observing vehicles passing by.
+
+Each vehicle = a network packet
+Vehicle type = protocol (TCP/UDP/ICMP)
+License plate = IP address
+Goods inside vehicle = payload/data
+
+A packet sniffer works similarly. It listens to network traffic and displays information about packets traveling through the network.
+
+Real Example
+
+When your browser opens a website:
+
+Your computer sends packets to the website server
+The packets contain:
+Source IP
+Destination IP
+Protocol type
+Data being transmitted
+
+The sniffer captures and displays these details.
+
+Example Output:
+
+[Packet #1] | Timestamp: 2026-05-22 18:30:15
+------------------------------------------------------------
+  Protocol        : TCP
+  Source IP       : 192.168.1.5:52341
+  Destination IP  : 142.250.183.78:443
+------------------------------------------------------------
+⚠️ Ethical Notice
+
+Packet sniffing should only be used:
+
+For educational purposes
+On your own network
+In authorized environments
+
+Unauthorized packet monitoring is illegal.
+
+What the Program Does
+
+The packet sniffer:
+
+Captures live packets from the network
+Identifies packet protocols
+Extracts IP addresses and port numbers
+Displays payload data when available
+Counts packets continuously
+Shows timestamps for each packet
+Stops safely when interrupted
+Step 2: Break the Problem into Small Sub-Tasks
+Sub-Task 1: Import Required Libraries
+
+The program imports:
+
+scapy → for capturing and analyzing packets
+datetime → for timestamps
+Sub-Task 2: Display Ethical Warning
+
+Before packet sniffing starts, the program displays an ethical notice reminding users to use the tool responsibly.
+
+Sub-Task 3: Create Packet Counter
+
+A variable stores the number of packets captured during execution.
+
+Every new packet increases the counter by 1.
+
+Sub-Task 4: Process Captured Packets
+
+A function processes every captured packet.
+
+This function:
+
+Identifies the protocol
+Extracts source and destination information
+Displays payload data if available
+Sub-Task 5: Check IP Layer
+
+The program first checks whether the packet contains an IP layer.
+
+This avoids errors and ensures valid packet processing.
+
+Sub-Task 6: Detect Protocol Type
+
+The program checks if the packet uses:
+
+TCP
+
+Used for:
+
+Websites
+Emails
+File transfers
+UDP
+
+Used for:
+
+Streaming
+Gaming
+Voice calls
+ICMP
+
+Used for:
+
+Ping commands
+Network diagnostics
+Sub-Task 7: Extract Packet Information
+
+The sniffer extracts:
+
+Source IP address
+Destination IP address
+Source port
+Destination port
+
+This helps identify:
+
+Who sent the packet
+Where it is going
+Sub-Task 8: Extract Payload Data
+
+If the packet contains data, the program displays it.
+
+Otherwise, it shows:
+
+“No payload data”
+Sub-Task 9: Start Packet Sniffing
+
+The program continuously listens for packets in real time.
+
+Every captured packet is automatically sent to the processing function.
+
+Sub-Task 10: Graceful Exit
+
+When the user presses Ctrl + C:
+
+Packet sniffing stops safely
+Total captured packets are displayed
+Stop time is shown
+Step 3: Writing the Actual Code
+
+In the packet_sniffer.py file:
+
+Import Scapy and datetime modules
+Display ethical notice
+Initialize packet counter
+Create packet processing function
+Detect TCP, UDP, and ICMP packets
+Display packet details
+Start sniffing packets
+Handle graceful shutdown
+Step 4: Understanding the Output
+
+Example:
+
+[Packet #5] | Timestamp: 2026-05-22 18:45:20
+------------------------------------------------------------
+  Protocol        : TCP
+  Source IP       : 192.168.1.5:44321
+  Destination IP  : 172.217.160.78:80
+------------------------------------------------------------
+What Each Output Means
+Output	Meaning
+Packet #5	Fifth captured packet
+Timestamp	Time when packet was captured
+Protocol: TCP	Packet uses TCP protocol
+Source IP	Sender’s IP address
+Destination IP	Receiver’s IP address
+Why the Program Works
+
+The program works because:
+
+Scapy captures live network packets
+Protocol detection identifies TCP, UDP, or ICMP traffic
+IP extraction retrieves sender and receiver addresses
+Payload extraction displays packet contents
+Packet counting tracks total traffic
+Timestamps record capture time
+Keyboard interrupt handling safely stops execution
+Complete Example Session
+============================================================
+⚠️  ETHICAL NOTICE:
+    This tool is for EDUCATIONAL and AUTHORIZED use only.
+============================================================
+
+🔍 Sniffing packets... Press Ctrl+C to stop.
+
+
+[Packet #1] | Timestamp: 2026-05-22 18:55:10
+------------------------------------------------------------
+  Protocol        : TCP
+  Source IP       : 192.168.1.5:52341
+  Destination IP  : 142.250.183.78:443
+------------------------------------------------------------
+
+[Packet #2] | Timestamp: 2026-05-22 18:55:12
+------------------------------------------------------------
+  Protocol        : ICMP
+  Source IP       : 192.168.1.5
+  Destination IP  : 8.8.8.8
+------------------------------------------------------------
+
+============================================================
+  ✅ Sniffing stopped by user.
+  📦 Total Packets Captured: 2
+============================================================
